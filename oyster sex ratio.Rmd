@@ -1,0 +1,22 @@
+---
+title: "sex ratio script"
+output: html_document
+date: "2023-06-30"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+phyto_1 <- read_sheet("https://docs.google.com/spreadsheets/d/1KNqQMr3QXEpqAxTXVUloRAfwUs38wBqr-6KB91-jzBU/edit#gid=1211980846", sheet = "1m_Wholewater_L_Quant", range = "BS59:BS66", col_names = FALSE)
+
+```
+```{r}
+phyto_1m
+```
+
+
+```{r}
+phyto_1m <- read.csv("BC_Phytoplankton_New-1m_Wholewater_L_Quant(1).csv")
+```
+

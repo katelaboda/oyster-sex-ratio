@@ -7,16 +7,81 @@ date: "2023-06-30"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r}
-phyto_1 <- read_sheet("https://docs.google.com/spreadsheets/d/1KNqQMr3QXEpqAxTXVUloRAfwUs38wBqr-6KB91-jzBU/edit#gid=1211980846", sheet = "1m_Wholewater_L_Quant", range = "BS59:BS66", col_names = FALSE)
 
-```
-```{r}
-phyto_1m
-```
-
-
-```{r}
+#load in phytoplankton and water temp data
+```{r} 
 phyto_1m <- read.csv("BC_Phytoplankton_New-1m_Wholewater_L_Quant(1).csv")
+phyto_1m
+waterconditions <- read.csv("BC_Phytoplankton_New-Conditions.csv")
+waterconditions
 ```
+
+#load in raw sex ratio data from Excel
+```{r}
+Pacific_Oyster_Sex_Ratio <- read.csv("Pacific_Oyster_Sex_Ratio.csv")
+Pacific_Oyster_Sex_Ratio
+```
+
+#update values in Environment; totalfemale, totalherm, femalegonads, percents female watertempsfake, total plankton
+```{r}
+totalfemale = Pacific_Oyster_Sex_Ratio$Female
+totalherm = Pacific_Oyster_Sex_Ratio$Hermaphrodite
+femalegonads = totalfemale + totalherm
+percentsfemale = femalegonads/Pacific_Oyster_Sex_Ratio$`Total Oysters Collected`
+totalplankton = phyto_1m[c(58-65),"Diatom_Sum"]
+totalplankton
+watertempsfake = waterconditions[range("H79:H86")]
+#how do you input only certain columns?
+```
+
+#add new columns to data sheet; Total Female Gonads, Percentage Female Gonads, Water Temps at 1m, ID_yyyymmdd
+```{r}
+Pacific_Oyster_Sex_Ratio$Total_Female_Gonads <- femalegonads
+Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads <- percentsfemale
+Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m <- watertempsfake
+Pacific_Oyster_Sex_Ratio$Total_Plankton <- totalplankton
+Pacific_Oyster_Sex_Ratio$ID_yyyymmdd
+Pacific_Oyster_Sex_Ratio
+```
+
+#rearrange column order
+```{r}
+setcolorder(Pacific_Oyster_Sex_Ratio, c("Date Collected", "ID_yyyymmdd", "Total Oysters Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
+Pacific_Oyster_Sex_Ratio
+```
+
+#plot sex ratio over time
+```{r}
+plot(Pacific_Oyster_Sex_Ratio$`Date Collected`, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
+```
+
+#plot sex ratio over water temps
+```{r}
+plot(Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m$...1, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Water Temperature at 1m")
+```
+
+#plot sex ratio over phytoplankton abundance
+```{r}
+plot(Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m$...1, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Water Temperature at 1m")
+```
+# note: water temps and total plankton data are from corresponding dates from 2022 (not exact dates, but same week)
+
+#create input vectors for barplot and update barplot values
+```{r}
+colors = c("lightblue", "pink", "yellow")
+regions <- c("Male", "Female", "Hermaphrodite")
+barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/3", "7/11", "7/18", "7/25")
+barplotvalues <- matrix(data = c(Pacific_Oyster_Sex_Ratio$Male, Pacific_Oyster_Sex_Ratio$Female, Pacific_Oyster_Sex_Ratio$Hermaphrodite), nrow = 3, ncol = 8, byrow = TRUE)
+```
+
+#plot sex ratio bar plot
+```{r}
+barplot(barplotvalues, main= "Sex Ratio Change During Summer Months", xlab = "Date Collected", ylab="Sex Ratio", col=colors, names.arg=barplotdates)
+```
+
+#and add legend
+```{r}
+legend("topleft", regions, cex = 0.4, fill = colors)
+```
+
 

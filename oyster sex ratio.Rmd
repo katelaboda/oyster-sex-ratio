@@ -45,20 +45,22 @@ Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m <- watertempsfake
 Pacific_Oyster_Sex_Ratio$Total_Plankton <- totalplankton
 datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711", "20230718", "20230725")
 Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- datesID
+juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199, 23206)
+Pacific_Oyster_Sex_Ratio$Julian_Date <- juliandates
 Pacific_Oyster_Sex_Ratio
 ```
 
 #rearrange column order
 ```{r}
 library(data.table)
-setcolorder(Pacific_Oyster_Sex_Ratio, c("Date.Collected", "ID_yyyymmdd", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
+setcolorder(Pacific_Oyster_Sex_Ratio, c("Date.Collected", "ID_yyyymmdd", "Julian_Date", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
 Pacific_Oyster_Sex_Ratio
 ```
 
 #plot sex ratio over time
 ```{r}
-plot(Pacific_Oyster_Sex_Ratio$``, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
-#how do I fix the x values so they go day by day but are still integers...
+plot(Pacific_Oyster_Sex_Ratio$Julian_Date, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time (Julian Day)")
+#how do I fix the x values so they go day by day but are still integers... a way other than Julian Day?
 ```
 
 #plot sex ratio over water temps

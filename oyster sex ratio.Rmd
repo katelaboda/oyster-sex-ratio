@@ -59,7 +59,13 @@ Pacific_Oyster_Sex_Ratio
 
 #plot sex ratio over time
 ```{r}
-plot(Pacific_Oyster_Sex_Ratio$Julian_Date, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time (Julian Day)")
+Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- as.numeric(Pacific_Oyster_Sex_Ratio$ID_yyyymmdd)
+Pacific_Oyster_Sex_Ratio$Dates <- as.Date(Pacific_Oyster_Sex_Ratio$Date.Collected, format="%m/%d/%y")
+plot(Pacific_Oyster_Sex_Ratio$Dates, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
+```
+
+
+```{r}
 #how do I fix the x values so they go day by day but are still integers... a way other than Julian Day?
 ```
 
@@ -88,4 +94,22 @@ barplot(barplotvalues, main= "Sex Ratio Change During Summer Months", xlab = "Da
 legend("topleft", regions, cex = 0.4, fill = colors)
 ```
 
+```{r}
+#linear model time
+#I want to look at the relationship between water temperature and percentage of female gonads; and diatom abundance and female gonads; time and percentage of female gonads
+#water temperature
+#dependent variable as predicted by independent: gonads~watertemp
+m1 <- lm(Percentage_Female_Gonads~Water_Temps_at_1m, Pacific_Oyster_Sex_Ratio)
+summary(m1)
+m1.binomial <- glm(Percentage_Female_Gonads~Water_Temps_at_1m, 
+                   family = "binomial",
+                   data = Pacific_Oyster_Sex_Ratio)
+summary(m1.binomial)
+m2.binomial <- glm(Percentage_Female_Gonads~Water_Temps_at_1m+Total_Plankton, 
+                   family = "binomial",
+                   data = Pacific_Oyster_Sex_Ratio)
+summary(m2.binomial)
+
+AIC(m1.binomial, m2.binomial)
+```
 

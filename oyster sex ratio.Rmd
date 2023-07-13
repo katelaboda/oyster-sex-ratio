@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #load in phytoplankton and water temp data
 ```{r} 
-phyto_1m <- read.csv("BC_Phytoplankton_New-1m_Wholewater_L_Quant(1).csv")
+phyto_1m <- read.csv("BC_Phytoplankton_New-1m_Wholewater_L_Quant.csv")
 phyto_1m
 waterconditions <- read.csv("BC_Phytoplankton_New-Conditions.csv")
 waterconditions
@@ -20,6 +20,10 @@ waterconditions
 ```{r}
 Pacific_Oyster_Sex_Ratio <- read.csv("Pacific_Oyster_Sex_Ratio.csv")
 Pacific_Oyster_Sex_Ratio
+
+#the real stuff
+POSR_REAL <- read.csv("Pacific_Oyster_Sex_Ratio_REAL.csv")
+POSR_REAL
 ```
 
 #update values in Environment; totalfemale, totalherm, femalegonads, percents female watertempsfake, total plankton
@@ -34,6 +38,17 @@ totalplankton
 watertempsfake = waterconditions$Water_Temp_1m_C[79:86]
 #note: will need to change to [105:115] excluding 106, 110, and 111
 watertempsfake
+
+#the real stuff
+totalfemale_REAL = POSR_REAL$Female
+totalherm_REAL = POSR_REAL$Hermaphrodite
+femalegonads_REAL = totalfemale_REAL + totalherm_REAL
+percentsfemale_REAL = femalegonads_REAL/POSR_REAL$Total.Oysters.Collected
+totaldiatom <- phyto_1m[c(84,86,87,88,89), "Diatom_Sum"]
+totaldiatom
+watertemps <- waterconditions[c(104,106,107,108,111), "Water_Temp_1m_C"]
+watertemps
+#make sure that row names are adjusted as new data comes in
 ```
 
 #add new columns to data sheet; Total Female Gonads, Percentage Female Gonads, Water Temps at 1m, ID_yyyymmdd
@@ -48,6 +63,15 @@ Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- datesID
 juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199, 23206)
 Pacific_Oyster_Sex_Ratio$Julian_Date <- juliandates
 Pacific_Oyster_Sex_Ratio
+
+#the real stuff
+POSR_REAL$Total_Female_Gonads <- femalegonads_REAL
+POSR_REAL$Percentage_Female_Gonads <- percentsfemale_REAL
+POSR_REAL$Water_Temp_at_1m <- watertemps
+POSR_REAL$Total_Diatom <- totaldiatom
+datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705")
+POSR_REAL$ID_yyyymmdd <- datesID
+POSR_REAL
 ```
 
 #rearrange column order
@@ -55,6 +79,11 @@ Pacific_Oyster_Sex_Ratio
 library(data.table)
 setcolorder(Pacific_Oyster_Sex_Ratio, c("Date.Collected", "ID_yyyymmdd", "Julian_Date", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
 Pacific_Oyster_Sex_Ratio
+
+#the real stuff
+library(data.table)
+setcolorder(POSR_REAL, c("Date.Collected", "ID_yyyymmdd", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temp_at_1m", "Total_Diatom"))
+POSR_REAL
 ```
 
 #plot sex ratio over time
@@ -62,21 +91,27 @@ Pacific_Oyster_Sex_Ratio
 Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- as.numeric(Pacific_Oyster_Sex_Ratio$ID_yyyymmdd)
 Pacific_Oyster_Sex_Ratio$Dates <- as.Date(Pacific_Oyster_Sex_Ratio$Date.Collected, format="%m/%d/%y")
 plot(Pacific_Oyster_Sex_Ratio$Dates, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
-```
 
-
-```{r}
-#how do I fix the x values so they go day by day but are still integers... a way other than Julian Day?
+#the real stuff
+POSR_REAL$ID_yyyymmdd <- as.numeric(POSR_REAL$ID_yyyymmdd)
+POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
+                           format = "%m/%d/%y")
+POSR_REAL
+plot(POSR_REAL$Dates,
+     POSR_REAL$Percentage_Female_Gonads,
+     ylab = "Percentage of Female Gonads",
+     xlab = "Time")
+# instead of "Percentage of Female Gonads", "Ova Present"?
 ```
 
 #plot sex ratio over water temps
 ```{r}
-plot(Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Water Temperature at 1m")
+plot(POSR_REAL$Water_Temp_at_1m, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Water Temperature at 1m")
 ```
 
 #plot sex ratio over phytoplankton abundance
 ```{r}
-plot(Pacific_Oyster_Sex_Ratio$Total_Plankton, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Diatom Abundance at 1m")
+plot(POSR_REAL$Total_Diatom, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Diatom Abundance at 1m")
 ```
 # note: water temps and total plankton data are from corresponding dates from 2022 (not exact dates, but same week)
 
@@ -86,6 +121,8 @@ colors = c("lightblue", "pink", "yellow")
 regions <- c("Male", "Female", "Hermaphrodite")
 barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18", "7/25")
 barplotvalues <- matrix(data = c(Pacific_Oyster_Sex_Ratio$Male, Pacific_Oyster_Sex_Ratio$Female, Pacific_Oyster_Sex_Ratio$Hermaphrodite), nrow = 3, ncol = 8, byrow = TRUE)
+
+#the real stuff
 ```
 
 #plot sex ratio bar plot
@@ -99,17 +136,25 @@ legend("topleft", regions, cex = 0.4, fill = colors)
 #I want to look at the relationship between water temperature and percentage of female gonads; and diatom abundance and female gonads; time and percentage of female gonads
 #water temperature
 #dependent variable as predicted by independent: gonads~watertemp
-m1 <- lm(Percentage_Female_Gonads~Water_Temps_at_1m, Pacific_Oyster_Sex_Ratio)
-summary(m1)
-m1.binomial <- glm(Percentage_Female_Gonads~Water_Temps_at_1m, 
+#percentage of female gonads vs. water temp at 1 m
+m1.binomial <- glm(Percentage_Female_Gonads~Water_Temp_at_1m, 
                    family = "binomial",
-                   data = Pacific_Oyster_Sex_Ratio)
+                   data = POSR_REAL)
 summary(m1.binomial)
-m2.binomial <- glm(Percentage_Female_Gonads~Water_Temps_at_1m+Total_Plankton, 
+
+#percentage of female gonads vs. total diatom abundance at 1m
+m2.binomial <- glm(Percentage_Female_Gonads~Water_Temp_at_1m+Total_Diatom, 
                    family = "binomial",
-                   data = Pacific_Oyster_Sex_Ratio)
+                   data = POSR_REAL)
 summary(m2.binomial)
 
+#AIC: does adding diatom abundance make the data a better fit? or make the model too complicated?
 AIC(m1.binomial, m2.binomial)
+
+#percentage of female gonads vs. time
+m3.binomial <- glm(Percentage_Female_Gonads~Dates,
+                   family = "binomial",
+                   data = POSR_REAL)
+summary(m3.binomial)
 ```
 

@@ -1,0 +1,113 @@
+Timestamp,Email Address,Date,Time_HH_MM,ID_yyyymmdd,Season,Air_Temp_C,Water_Temp_1m_C,Water_Temp_5m_C,Salinity_1m_ppt,Salinity_5m_ppt,Weather,Wind_Direction,Wind_Speed_mph,Tide_Status,Tide_Height_ft,Filtered_PTOX_ml,Filtered_ChL_ml,Filtered_Nutrients_ml,Alex_Present,Notes,CTD_File
+NA,NA,10/4/2018,10:32,20181004,Fall,NA,7.9,NA,29,NA,C,NA,none,O,13.2,1000,500,60,YES,tow only,NA
+NA,NA,10/11/2018,11:30,20181011,Fall,NA,7.2,7.6,29,30,R,NW,light,I,6.5,1000,500,60,NO,NA,https://drive.google.com/file/d/1Cd-Q9X8H5Kj_sO2NGeJxfURkE1eAdYS4/view?usp=sharing
+NA,NA,10/18/2018,15:45,20181018,Fall,NA,7.8,7.6,23,25,C,S,light,O,6.3,1000,500,60,NO,NA,https://drive.google.com/file/d/1fk_6m_mX3aWC7aYM4wm-eeDsMJ0gmrQJ/view?usp=sharing
+NA,NA,10/26/2018,10:00,20181026,Fall,NA,7.3,NA,18,NA,C,NA,none,I,3.3,1000,500,60,NO,NA,https://drive.google.com/file/d/13X1TKE3Ss8ILfX_zAnQvmlRlagmHSNg6/view?usp=sharing
+NA,NA,11/7/2018,11:30,20181107,Fall,1.9,6,NA,17,NA,PC,NA,none,I,17.6,1000,500,60,NO,ptox marked incorrectly with 11/01/2018,NA
+NA,NA,11/21/2018,13:30,20181121,Fall,6.3,5.8,NA,15,NA,C,NA,light,O,12.8,NA,NA,NA,NO,NA,NA
+NA,NA,1/15/2019,12:00,20190115,Winter,NA,NA,NA,NA,NA,NA,NA,NA,O,6.1,NA,NA,NA,NO,water scooped from surface by Meta for a spot check,NA
+NA,NA,1/23/2019,11:56,20190123,Winter,1.1,4.5,NA,15,NA,C,SE,light,I,12,1000,500,60,NO,NA,NA
+NA,NA,2/28/2019,12:30,20190228,Winter,5.7,4,NA,18,NA,S,NA,light,O,7.4,NA,NA,NA,NO,tow only,NA
+NA,NA,6/21/2019,10:30,20190621,Summer,20,14.3,NA,18,NA,S,NA,light,L,-0.5,1000,500,60,YES,NA,NA
+NA,NA,5/9/2020,NA,20200509,Spring,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+NA,NA,5/29/2020,NA,20200529,Spring,NA,NA,NA,NA,NA,C,NA,moderate,O,NA,NA,NA,NA,YES,"tow only, collected by Meta",NA
+NA,NA,6/2/2020,13:30,20200602,Summer,13.5,11,11,20,23,C,NA,moderate,O,10,1000,500,60,YES,NA,NA
+NA,NA,6/7/2020,NA,20200607,Summer,NA,NA,NA,NA,NA,R,NA,NA,NA,NA,NA,NA,NA,NO,"tow only, collected by Meta",NA
+NA,NA,6/9/2020,11:30,20200609,Summer,18.5,15.2,11.5,25,11.5,S,NA,moderate,I,-0.8,1000,500,60,YES,NA,NA
+NA,NA,6/17/2020,14:00,20200617,Summer,16.5,14.5,14,18,20,C,NA,none,O,9.7,1000,500,60,NO,NA,NA
+NA,NA,6/23/2020,14:00,20200623,Summer,17,14,14,17,18,C,NA,moderate,I,11.6,1000,500,60,YES,NA,NA
+NA,NA,6/30/2020,9:30,20200630,Summer,NA,15.5,15.5,16,17,C,NA,light,I,12.5,1000,500,60,NO,NA,NA
+NA,NA,7/7/2020,14:20,20200707,Summer,23,16,14,19,26,C,NA,light,I,12.5,1000,500,60,YES,NA,NA
+NA,NA,7/16/2020,NA,20200716,Summer,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NO,"tow only, collected by Meta",NA
+NA,NA,9/2/2020,14:00,20200902,Fall,NA,NA,NA,NA,NA,R,NA,light,I,15.8,NA,NA,NA,YES,tow and phyto samples at 1 & 5 m only,NA
+NA,NA,9/10/2020,16:00,20200910,Fall,NA,NA,NA,NA,NA,NA,NA,NA,I,9.9,NA,NA,NA,YES,Collected by Meta,NA
+NA,NA,1/22/2021,13:45,20210122,Winter,2,8,7.5,30,30,PC,NA,none,O,6.2,1000,500,60,NO,NA,NA
+NA,NA,2/23/2021,9:00,20210223,Winter,1.1,9,8,30,32,C,SE,strong,I,12.5,1000,500,60,NO,NA,NA
+NA,NA,3/6/2021,10:30,20210306,Spring,1.1,9,9,30,31,PC,SE,light,O,7.5,1000,500,60,NO,NA,NA
+NA,NA,3/14/2021,12:20,20210314,Spring,-3.8,9,9,34,36,S,NE,moderate,I,10,1000,500,60,NO,NA,NA
+NA,NA,3/19/2021,11:22,20210319,Spring,0,9,8,30,32,PC,SW,moderate,I,2,1000,500,60,NO,NA,NA
+NA,NA,4/1/2021,15:04,20210401,Spring,2.2,3.6,3.5,27.8,28,C,SW,moderate,I,12.4,1000,500,60,NO,temp/sal collected with YSI,NA
+NA,NA,4/11/2021,10:23,20210411,Spring,-3.3,3.6,3.6,30,28.7,PC,N,light,I,2.1,1000,500,60,NO,temp/sal collected with YSI,NA
+NA,NA,4/16/2021,9:00,20210416,Spring,4.4,4.1,3.8,26.7,28,S,NA,none,O,1.2,1000,500,60,NO,temp/sal collected with YSI,NA
+NA,NA,4/22/2021,14:15,20210422,Spring,10,4.4,3.7,29.2,28.9,S,NA,none,O,3.2,1000,500,60,NO,NA,NA
+NA,NA,5/2/2021,11:30,20210502,Spring,8.8,5.7,4.6,27.4,28.2,S,NA,none,O,1.2,1000,500,60,NO,NA,NA
+NA,NA,5/5/2021,12:00,20210505,Spring,7.7,NA,NA,NA,NA,PC,NE,strong,O,5.7,NA,NA,NA,YES,only 3 min tow taken pre-harvest,NA
+NA,NA,5/8/2021,11:56,20210508,Spring,12.5,6.1,5.2,26.4,27.8,R,NA,none,I,13.9,1000,500,60,NO,temp/sal collected with YSI,NA
+NA,NA,5/14/2021,12:25,20210514,Spring,6.1,7.7,6.5,21.5,26.5,PC,W,light,I,4.6,1000,500,60,NO,temp/sal collected with YSI,NA
+NA,NA,5/19/2021,12:50,20210519,Spring,13.9,10.2,8.3,21.9,24.5,S,W,light,I,1.4,1000,500,60,NO,NA,NA
+NA,NA,5/23/2021,14:30,20210523,Spring,9.4,NA,NA,NA,NA,S,SW,light,O,1,NA,NA,NA,NO,tow only,NA
+NA,NA,5/26/2021,13:30,20210526,Spring,8.9,NA,NA,NA,NA,C,SW,moderate,I,14.5,1000,500,60,NO,NA,NA
+NA,NA,6/2/2021,14:00,20210602,Summer,11.1,NA,NA,NA,NA,R,SE,rain,I,1.9,NA,NA,NA,NO,only 3 min tow taken pre-harvest,NA
+NA,NA,6/3/2021,14:00,20210603,Summer,9.44,9.3,9.3,20.7,21.2,R,SW,moderate,O,3.2,1000,500,60,NO,NA,NA
+NA,NA,6/8/2021,13:15,20210608,Summer,21,NA,NA,NA,NA,S,W,light,I,13.4,NA,NA,NA,NO,only 3 min tow taken pre-harvest,NA
+NA,NA,6/10/2021,14:00,20210610,Summer,12.8,13.4,13.39,19.6,20.2,C,SW,moderate,I,13.8,1000,500,60,NO,NA,https://drive.google.com/file/d/1ATr0aX6OzWahRoYHtZZCVU9nvBbAo59G/view?usp=sharing
+NA,NA,6/15/2021,14:30,20210615,Summer,13.3,NA,NA,NA,NA,PC,NA,none,I,6.5,NA,NA,NA,NO,only 3 min tow taken pre-harvest,NA
+NA,NA,6/17/2021,11:15,20210617,Summer,15,12.5,12.5,19,20.5,PC,N,moderate,O,4.5,1000,500,60,NO,NA,https://drive.google.com/file/d/1oaeYdC5pOcyBZ3esk2QQI9mXoKG1OaXh/view?usp=sharing
+NA,NA,6/22/2021,13:40,20210622,Summer,14.5,12.2,NA,19.8,NA,PC,N,light,O,16.5,NA,NA,NA,YES,only 3 min tow taken pre-harvest,NA
+NA,NA,6/23/2021,10:15,20210623,Summer,15.5,13.3,13,14,14,PC,N,light,I,7.6,600,500,60,YES,NA,https://drive.google.com/file/d/1QavBQs3fpWsVCH5ihNSXhxXNSobNvVUn/view?usp=sharing
+NA,NA,6/29/2021,13:15,20210629,Summer,21.22,14.1,NA,15,NA,PC,N,light,I,1.9,NA,NA,NA,NO,only 3 min tow taken pre-harvest,NA
+NA,NA,7/1/2021,12:04,20210701,Summer,17.7,14.6,13.1,15,18,PC,SE,strong,O,5.5,1000,500,0,YES,NA,https://drive.google.com/file/d/1CvqlrcAfaXUhbTfJk7Gi3Lc-P2xS4S6r/view?usp=sharing
+NA,NA,7/6/2021,13:30,20210706,Summer,15.5,14.9,NA,8,NA,PC,S,moderate,O,10.07,NA,NA,NA,NO,NA,NA
+NA,NA,7/8/2021,11:30,20210708,Summer,15.8,15.2,13.8,14.5,17.5,PC,E,moderate,I,8.8,1000,500,60,NO,NA,https://drive.google.com/file/d/1NoJziJIWRgQ7T-Kn_07blgvAiy7c5JQ0/view?usp=sharing
+NA,NA,7/13/2021,15:30,20210713,Summer,14.1,13.8,12.4,12.5,22.3,C,S,light,I,11.89,1000,500,60,NO,NA,https://docs.google.com/spreadsheets/d/1ltKjeWMTpP48enQPpCLEGB1wiot-pCH6urOxkra4Qg/edit?usp=sharing
+NA,NA,7/17/2021,15:27,20210717,Summer,21,13.5,NA,12,NA,S,SE,light,I,7.2,NA,NA,NA,NO,NA,NA
+NA,NA,7/20/2021,14:45,20210720,Summer,20.8,15.6,12.9,13.5,27.5,S,SE,strong,O,7.06,1000,250,30,NO,NA,https://drive.google.com/file/d/1jX_drUPTAe44kaZnz90SwZHsND2kj_Yh/view?usp=sharing
+NA,NA,7/27/2021,15:30,20210727,Summer,11.11,14.8,13.7,13.5,17,PC,N,moderate,I,12.48,1000,250,30,NO,NA,NA
+NA,NA,8/5/2021,15:05,20210805,Summer,18.2,15.5,13,15,24,PC,N,light,O,9.44,1000,250,60,NO,NA,NA
+NA,NA,8/10/2021,11:05,20210810,Summer,11.11,13.3,13.3,18.75,19.1,R,S,strong,I,2.92,1000,250,60,NO,NA,NA
+NA,NA,8/18/2021,14:30,20210818,Summer,11.6,12.3,12.3,14,16,C,S,light,O,7.95,1000,250,60,YES,NA,NA
+NA,NA,8/24/2021,12:40,20210824,Summer,10,13.4,13.1,14,16.8,R,N,light,I,8.49,1000,250,60,NO,NA,NA
+NA,NA,9/1/2021,14:05,20210901,Summer,17.2,14.9,12.1,14.5,22,S,NA,none,O,8.5,1000,250,60,NO,NA,NA
+NA,NA,9/8/2021,13:44,20210908,Summer,12.2,12.3,12.1,17.9,21,C,N,light,I,13.79,1000,250,60,YES,NA,NA
+NA,NA,9/15/2021,13:46,20210915,Summer,11.6,10.7,10.6,19.9,20,C,N,moderate,O,8.96,1000,250,60,YES,Issue with 5m count- got mixed up with AB or thrown away,NA
+NA,NA,9/21/2021,11:45,20210921,Summer,11.1,10.6,10.4,17.8,21,R,N,Strong,I,9.46,1000,250,60,NO,NA,NA
+NA,NA,9/28/2021,12:58,20210928,Summer,7.5,9.1,9.15,20.9,21.9,C,S,moderate,I,7.96,1000,250,60,NO,NA,NA
+NA,NA,10/5/2021,11:55,20211005,Fall,2.2,8.05,8.1,26.7,26.95,S,N,moderate,I,13.4,1000,250,60,NO,NA,NA
+NA,NA,10/16/2021,10:35,20211016,Fall,5,7.18,7.3,25.9,26.1,S,N,light,I,12.98,1000,500,60,NO,reduced sampling- no PTOX or Chl a,NA
+NA,NA,11/10/2021,9:50,20211110,Fall,2.2,6.9,6.9,29.5,29.6,PC,S,light ,O,7.27,1000,500,60,NO,NA,NA
+NA,NA,12/1/2021,9:50,20211201,Winter,2.2,5.1,5.2,29.1,29.1,R,N,light,I,16.51,1000,500,60,NO,NA,NA
+NA,NA,1/24/2022,12:03,20220124,Winter,0.56,3.65,3.78,30.07,30.25,R,E,light,I,3.4,1000,500,60,NO,"Weather: snowing, raining, cloudy",NA
+NA,kelly.koehler@noaa.gov,2/8/2022,12:10,20220208,Winter,4,3.38,3.4,29.77,29.94,R,SE,Strong,O,3.6,1000,500,60,NO,high winds and stormy,NA
+NA,kelly.koehler@noaa.gov,3/17/2022,11:10,20220317,Spring,1.67,3.46,3.4,29.61,29.9,C,SE,moderate,I,11.4,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,4/8/2022,11:58,20220408,Spring,5,4.32,4.29,29.65,29.4,C,SE,light,O,3.56,1000,500,60,NO,"Tide: ""Outgoing"" and ""Low"" circled... ""Sunny"" and ""Mostly Cloudy"" Circled""... No tide height available in red binder",NA
+NA,kelly.koehler@noaa.gov,4/20/2022,12:45,20220420,Spring,6.11,4.35,4.29,30.98,30.95,PC,NW,moderate,I,2.5,1000,500,60,NO,"Air temp not available, wind direction not available, ""Incoming"" and ""low"" tide circled, tide height not available according to red binder",NA
+NA,rebecca.cates@noaa.gov,5/4/2022,9:40,20220504,Spring,5.55556,5.91,5.9,29.95,29.93,R,SE,strong,O,-0.6,1000,500,60,YES,NA,NA
+NA,kelly.koehler@noaa.gov,5/10/2022,8:20,20220510,Spring,7.22,7.57,7.56,29.58,29.75,R,SE,light,I,11.6,1000,500,60,NO,time of sample collected not recorded in red binder... check notebook,NA
+NA,kelly.koehler@noaa.gov,5/17/2022,13:20,20220517,Spring,10.56,8.25,7.68,27.78,28.67,PC,NW,light,I,12.53,1000,500,60,YES,air temp not recorded.... check field notebook,NA
+NA,kelly.koehler@noaa.gov,5/24/2022,9:30,20220524,Spring,11.67,9.9,9.12,27.8,29.1,C,SE,light,O,12.6,1000,500,60,YES,NA,NA
+NA,kelly.koehler@noaa.gov,5/31/2022,11:09,20220531,Spring,24.4,9.6,8.25,29.05,29.54,S,NW,light,I,4.1,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,6/7/2022,14:07,20220607,Summer,20,12.52,12.02,26.15,26.28,S,N,light,I,3.68,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,6/14/2022,10:20,20220614,Summer,11.67,10.18,10.15,21.67,23,C,SE,light,I,2.9,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,6/21/2022,14:12,20220621,Summer,11.67,11.83,11.47,23.48,24.35,R,NW,light,I,2.5,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,6/28/2022,12:46,20220628,Summer,22.22,18.2,14.5,15.1,20.8,S,NW,light,I,11.8,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,7/5/2022,14:24,20220705,Summer,18.3,17.3,12,12.5,24.9,S,S,light,I,6.5,1000,500,60,NO,NA,NA
+NA,kelly.koehler@noaa.gov,7/12/2022,11:06,20220712,Summer,13.3,14.81,14.7,14.3,15,R,E,light,I,10.3,"1m 1000ml, 5m 900ml",500,60,NO,NA,NA
+NA,rebecca.cates@noaa.gov,7/19/2022,11:00,20220719,Summer,11.6667,12.81,12.89,17.95,18.12,PC,SE,light,O,1.6,1000,500,60,YES,NA,NA
+NA,rebecca.cates@noaa.gov,7/26/2022,10:30,20220726,Summer,14.4444,12.6,12.61,13,13.7,C,SE,moderate,I,8,100,500,60,NO,NA,NA
+NA,rebecca.cates@noaa.gov,8/2/2022,10:20,20220802,Summer,13.3333,14.03,13.67,10.4,12.27,C,SE,moderate,O,0.1,1000,500,60,NO,NA,NA
+NA,rebecca.cates@noaa.gov,8/9/2022,10:50,20220809,Summer,15,11.58,12.05,5,13.8,PC,SE,light,I,11.8,1000,500,60,NO,NA,NA
+NA,rebecca.cates@noaa.gov,8/18/2022,1045,20220818,Summer,15.5556,11.9,NA,15,NA,S,SW,light,O,5.09,1000,500,60,NO,NA,NA
+NA,rebecca.cates@noaa.gov,8/22/2022,1040,20220822,Summer,17.2222,13.7,12,15.2,21.8,PC,SW,light,I,11,1000,500,60,NO,NA,NA
+NA,juliana.cornett@noaa.gov,8/30/2022,10:35,20220830,Summer,14.4,13.23,13.38,16.08,16.79,R,SE,light,I,0.8,1000,500,60,YES,NA,NA
+NA,juliana.cornett@noaa.gov,9/6/2022,10:30,20220906,Fall,11.1,12.55,12.24,12.2,21,C,NW,moderate,I,12.62,1000,500,60,NO,NA,NA
+NA,juliana.cornett@noaa.gov,9/12/2022,10:20,20220912,Fall,9.22,11.44,11.59,19.22,21.08,PC,SW,light,I,0.23,1000,500,60,NO,NA,NA
+NA,juliana.cornett@noaa.gov,9/19/2022,10:45,20220919,Fall,10.6,11.6,11.45,15.9,22.7,PC,W,light,O,10.71,1000,500,60,NO,NA,NA
+NA,juliana.cornett@noaa.gov,9/27/2022,09:00,20220927,Fall,10,10.34,10.15,19.6,23.4,PC,SE,light,I,-0.07,1000,500,60,YES,NA,NA
+NA,juliana.cornett@noaa.gov,10/3/2022,10:30,20221003,Fall,7.8,9.3,9.84,17.7,19.4,PC,NW,light,O,9.72,1000,500,60,NO,NA,NA
+12/8/2022 15:21:24,juliana.cornett@noaa.gov,12/5/2022,10:20,20221205,Winter,-3.33,3.82,3.99,29.15,28.84,S,W,light,I,17.15,1000,500,60,NO,NA,NA
+1/19/2023 8:33:01,juliana.cornett@noaa.gov,1/18/2023,15:36,20230118,Winter,2.78,3.57,3.82,29.85,30.55,PC,SE,light,O,0.66,1000,500,60,NO,Castaway only reached 4.1m (not 5m) since tide was so low,
+2/13/2023 8:33:37,juliana.cornett@noaa.gov,2/10/2023,10:45,20230210,Winter,1.11,3.54,3.7,30.58,30.46,MC,S,moderate,I,3.08,1000,500,60,NO,NA,
+3/31/2023 15:13:29,juliana.cornett@noaa.gov,3/30/2023,10:20,20230330,Spring,-0.5,3.9,3.95,31.25,31.35,PC,NW,light,O,11.04,1000,500,60,NO,NA,
+5/5/2023 14:21:26,juliana.cornett@noaa.gov,5/4/2023,10:10,20230504,Spring,5,6.13,6.05,28.48,28.75,PC,NW,light,I,6.31,1000,500,60,NO,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control",
+5/10/2023 15:51:05,juliana.cornett@noaa.gov,5/9/2023,09:45,20230509,Spring,7.22,7.38,7.59,29.34,29.48,PC,NE,light,O,-1.34,1000,500,60,NO,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control; castaway only reached 3.9m (not 5m) since tide was so low",
+5/17/2023 9:59:57,juliana.cornett@noaa.gov,5/15/2023,12:30,20230515,Spring,13.89,7.97,7.18,28.72,28.94,S,NW,light,O,11.52,1000,500,60,YES,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control",
+5/25/2023 15:33:44,juliana.cornett@noaa.gov,5/23/2023,10:25,20230523,Spring,12.78,11.17,9.75,24,26.57,PC,SW,light,I,-0.5,1000,500,60,NO,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control",
+6/14/2023 8:43:18,juliana.cornett@noaa.gov,6/6/2023,11:45,20230606,Summer,9.28,9.58,9.61,24.48,23.95,C,SE,moderate,I,1.19,1000,500,60,YES,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control. Oysters from this day tested at 90 ug/100 g at DEC.",
+6/15/2023 9:58:32,juliana.cornett@noaa.gov,6/8/2023,09:44,20230608,Summer,12.78,9.96,9.17,25.36,26.4,PC,N,light,O,0,1000,500,60,YES,Did not collect eDNA samples since this was an extra sampling day,
+6/15/2023 12:45:59,juliana.cornett@noaa.gov,6/13/2023,10:18,20230613,Summer,11.11,11.03,10.98,22.08,22.26,PC,SE,light,I,12.63,1000,500,60,YES,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control (tap water, not DI, for negative control because DI/RO system broken and UAF was locked)",
+6/26/2023 16:03:43,juliana.cornett@noaa.gov,6/20/2023,10:09,20230620,Summer,14.11,14.28,14.03,21.32,22.63,PC,S,light,I,-0.86,1000,500,60,NO,"Collected 3, 1L water samples from 1m for eDNA, plus 1L negative control (tap water, not DI, for negative control because DI/RO system broken and UAF was locked). Castaway CTD only reached 4.528 m max depth because of low tide. ",
+6/30/2023 9:32:22,kate.laboda@noaa.gov,6/26/2023,14:02,20230626,Summer,13.39,13.7,11.85,19,24,R,S,none,I,3.54,1000,500,60,YES,,
+,chart16@alaska.edu,6/29/2023,15:00,20230629,Summer,NA,NA,NA,NA,NA,R,SE,moderate,,,NA,NA,NA,NA,Meta ran to farm and collected 3 minute net tow only,NA
+,chart16@alaska.edu,6/30/2023,12:00,20230630,Summer,NA,NA,NA,NA,NA,PC,SE,moderate,,,NA,NA,NA,NA,Meta ran to farm and collected 3 minute net tow only,NA
+7/6/2023 14:58:49,kate.laboda@noaa.gov,7/5/2023,13:39,20230705,Summer,15.78,15.1,11.35,11.58,25.5,PC,S,light,I,10.44,1000,500,60,YES,,
+7/12/2023 15:42:22,kate.laboda@noaa.gov,7/11/2023,10:15,20230711,Summer,12.2,15.1,14.6,17,19,C,NE,none,O,10.82,1000,500,60,YES,"no alex cells in net tow, 2 in 1m",

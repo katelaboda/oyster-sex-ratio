@@ -44,9 +44,9 @@ totalfemale_REAL = POSR_REAL$Female
 totalherm_REAL = POSR_REAL$Hermaphrodite
 femalegonads_REAL = totalfemale_REAL + totalherm_REAL
 percentsfemale_REAL = femalegonads_REAL/POSR_REAL$Total.Oysters.Collected
-totaldiatom <- phyto_1m[c(84,86,87,88,89), "Diatom_Sum"]
+totaldiatom <- phyto_1m[c(84,86,87,88,89,90), "Diatom_Sum"]
 totaldiatom
-watertemps <- waterconditions[c(104,106,107,108,111), "Water_Temp_1m_C"]
+watertemps <- waterconditions[c(104,106,107,108,111,112), "Water_Temp_1m_C"]
 watertemps
 #make sure that row names are adjusted as new data comes in
 ```
@@ -69,8 +69,10 @@ POSR_REAL$Total_Female_Gonads <- femalegonads_REAL
 POSR_REAL$Percentage_Female_Gonads <- percentsfemale_REAL
 POSR_REAL$Water_Temp_at_1m <- watertemps
 POSR_REAL$Total_Diatom <- totaldiatom
-datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705")
+datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711")
 POSR_REAL$ID_yyyymmdd <- datesID
+juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192)
+POSR_REAL$Julian_Date <- juliandates
 POSR_REAL
 ```
 
@@ -82,7 +84,7 @@ Pacific_Oyster_Sex_Ratio
 
 #the real stuff
 library(data.table)
-setcolorder(POSR_REAL, c("Date.Collected", "ID_yyyymmdd", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temp_at_1m", "Total_Diatom"))
+setcolorder(POSR_REAL, c("Date.Collected", "ID_yyyymmdd", "Julian_Date", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temp_at_1m", "Total_Diatom"))
 POSR_REAL
 ```
 
@@ -99,19 +101,67 @@ POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
 POSR_REAL
 plot(POSR_REAL$Dates,
      POSR_REAL$Percentage_Female_Gonads,
-     ylab = "Percentage of Female Gonads",
+     ylab = "Percentage of Oysters with Ova Present",
      xlab = "Time")
 # instead of "Percentage of Female Gonads", "Ova Present"?
+
+#ggplot time
+install.packages("ggplot2")
+library(ggplot2)
+graph1 <- qplot(Dates, Percentage_Female_Gonads, data = POSR_REAL, xlab = "Date Collected", ylab="Percentage of Oysters with Ova Present")
+ptcolor <- 'grey20'
+graph1 +
+  ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
+    axis.title.x=element_text(color=ptcolor),
+    axis.title.y=element_text(color=ptcolor))
+
+#create a common theme to reuse throughout plots
+common_theme <- function() {
+  ptcolor <- 'grey20' # plot text color
+  theme(
+    plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
+    axis.title.x=element_text(color=ptcolor),
+    axis.title.y=element_text(color=ptcolor))
+}
+
+graph1 +
+  ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
+  theme_bw()+
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
+
 ```
 
 #plot sex ratio over water temps
 ```{r}
-plot(POSR_REAL$Water_Temp_at_1m, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Water Temperature at 1m")
+plot(POSR_REAL$Water_Temp_at_1m, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Oysters with Ova Present", xlab="Water Temperature at 1m")
+
+graph2 <- qplot(Water_Temp_at_1m, 
+      Percentage_Female_Gonads, 
+      data=POSR_REAL, 
+      xlab = "Water Temperature at 1m (degrees C)", 
+      ylab="Oysters with Ova Present (% Collected)")
+
+graph2+
+  ggtitle("Oysters Collected with Ova Present and Water Temperature")+
+  theme_bw()+
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
 ```
 
 #plot sex ratio over phytoplankton abundance
 ```{r}
 plot(POSR_REAL$Total_Diatom, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Diatom Abundance at 1m")
+
+graph3 <- qplot(Total_Diatom, 
+      Percentage_Female_Gonads, 
+      data=POSR_REAL, 
+      xlab="Diatom Abundance at 1m", 
+      ylab="Percentage of Oysters with Ova Present")
+
+graph3+
+  ggtitle("Oysters Collected with Ova Present and Diatom Abundance")+
+  theme_bw()+
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
 ```
 # note: water temps and total plankton data are from corresponding dates from 2022 (not exact dates, but same week)
 
@@ -119,17 +169,27 @@ plot(POSR_REAL$Total_Diatom, POSR_REAL$Percentage_Female_Gonads, ylab="Percentag
 ```{r}
 colors = c("lightblue", "pink", "yellow")
 regions <- c("Male", "Female", "Hermaphrodite")
-barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18", "7/25")
-barplotvalues <- matrix(data = c(Pacific_Oyster_Sex_Ratio$Male, Pacific_Oyster_Sex_Ratio$Female, Pacific_Oyster_Sex_Ratio$Hermaphrodite), nrow = 3, ncol = 8, byrow = TRUE)
+barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11")
+barplotvalues <- matrix(data = c(POSR_REAL$Male, POSR_REAL$Female, POSR_REAL$Hermaphrodite), nrow = 3, ncol = 6, byrow = TRUE)
 
 #the real stuff
 ```
 
 #plot sex ratio bar plot
 ```{r}
-barplot(barplotvalues, main= "Sex Ratio Change During Summer Months", xlab = "Date Collected", ylab="Sex Ratio", col=colors, names.arg=barplotdates)
+barplot(barplotvalues, main= "Sex Ratio Change During Summer Months", xlab = "Date Collected", ylab="Number of Oysters", col=colors, names.arg=barplotdates)
 legend("topleft", regions, cex = 0.4, fill = colors)
 ```
+```{r}
+#ggplot2 stacked bar plot
+regions <- c("Male", "Female", "Hermaphrodite")
+barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11")
+barplotdata <- data.frame(barplotvalues+barplotdates, row.names=regions)
+barplotdata
+ggplot(data=barplotdata, aes(fill=c(Male, Female, Hermaphrodite)))+
+  geom_bar(stat='identity', position=position_stack())
+```
+
 
 ```{r}
 #linear model time
@@ -156,5 +216,10 @@ m3.binomial <- glm(Percentage_Female_Gonads~Dates,
                    family = "binomial",
                    data = POSR_REAL)
 summary(m3.binomial)
+
+m4.binomial <- glm(Percentage_Female_Gonads~Julian_Date,
+                   family = "binomial",
+                   data = POSR_REAL)
+summary(m4.binomial)
 ```
 

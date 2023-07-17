@@ -186,8 +186,22 @@ regions <- c("Male", "Female", "Hermaphrodite")
 barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11")
 barplotdata <- data.frame(barplotvalues+barplotdates, row.names=regions)
 barplotdata
-ggplot(data=barplotdata, aes(fill=c(Male, Female, Hermaphrodite)))+
+ggplot(data=barplotdata, aes(x=fill=c(Male, Female, Hermaphrodite)))+
   geom_bar(stat='identity', position=position_stack())
+
+# copying df
+barplotdata_2 <- barplotdata
+
+# adding sex as a new column
+barplotdata_2$sex <- c("Male", "Female", "Hermaphrodite")
+
+# making wide data long
+long_barplot <- gather(data = barplotdata_2, key = "day", value = "count", 1:6) # key = description for columns you have & value = description for what is in the cells of your data frame
+
+# ggplot
+ggplot(data=long_barplot, aes(x=day, y=count, fill=sex)) +
+  geom_bar(stat='identity')+
+  theme_bw()
 ```
 
 

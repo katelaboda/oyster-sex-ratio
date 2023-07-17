@@ -178,16 +178,21 @@ barplotvalues <- matrix(data = c(POSR_REAL$Male, POSR_REAL$Female, POSR_REAL$Her
 #plot sex ratio bar plot
 ```{r}
 barplot(barplotvalues, main= "Sex Ratio Change During Summer Months", xlab = "Date Collected", ylab="Number of Oysters", col=colors, names.arg=barplotdates)
-legend("topleft", regions, cex = 0.4, fill = colors)
+legend("topleft", regions, cex = 0.4, fill = colors))
 ```
 ```{r}
 #ggplot2 stacked bar plot
 regions <- c("Male", "Female", "Hermaphrodite")
 barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11")
 barplotdata <- data.frame(barplotvalues+barplotdates, row.names=regions)
+barplotdata$"6/6" <-barplotdata$X1
+barplotdata$"6/13" <-barplotdata$X2
+barplotdata$"6/20" <-barplotdata$X3
+barplotdata$"6/26" <-barplotdata$X4
+barplotdata$"7/5" <-barplotdata$X5
+barplotdata$"7/11" <-barplotdata$X6
+barplotdata <- barplotdata[7:12]
 barplotdata
-ggplot(data=barplotdata, aes(x=fill=c(Male, Female, Hermaphrodite)))+
-  geom_bar(stat='identity', position=position_stack())
 
 # copying df
 barplotdata_2 <- barplotdata
@@ -197,11 +202,29 @@ barplotdata_2$sex <- c("Male", "Female", "Hermaphrodite")
 
 # making wide data long
 long_barplot <- gather(data = barplotdata_2, key = "day", value = "count", 1:6) # key = description for columns you have & value = description for what is in the cells of your data frame
+long_barplot
+
+# change date to be factor
+long_barplot$day <- factor(long_barplot$day, levels = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11"))
+
+# make 0s NA for text purposes
+#long_barplot[long_barplot==0] <- NA
 
 # ggplot
 ggplot(data=long_barplot, aes(x=day, y=count, fill=sex)) +
   geom_bar(stat='identity')+
-  theme_bw()
+  theme_bw()+
+  ggtitle("Sex of Oysters Collected")+ 
+  xlab("Date Collected")+
+  ylab("Number of Oysters")+
+  scale_fill_manual(values=c("pink", "yellow", "lightblue"))+
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))+
+  guides(fill=guide_legend(title="Sex"))
+  #geom_text(aes(y=count, 
+                #label=count(when(count, count>0)), 
+                #na.rm=T), 
+                #position = position_stack(vjust=0.5), 
+                #colour='grey20')
 ```
 
 

@@ -244,6 +244,11 @@ m1.binomial <- glm(Percentage_Female_Gonads~Water_Temp_at_1m,
                    data = POSR_REAL)
 summary(m1.binomial)
 
+m11.binomial <- glm(Percentage_Female_Gonads~Total_Diatom,
+                    family=binomial,
+                    data = POSR_REAL)
+summary(m11.binomial)
+
 #percentage of female gonads vs. total diatom abundance at 1m
 m2.binomial <- glm(Percentage_Female_Gonads~Water_Temp_at_1m+Total_Diatom, 
                    family = "binomial",

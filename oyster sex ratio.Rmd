@@ -98,6 +98,7 @@ plot(Pacific_Oyster_Sex_Ratio$Dates, Pacific_Oyster_Sex_Ratio$Percentage_Female_
 POSR_REAL$ID_yyyymmdd <- as.numeric(POSR_REAL$ID_yyyymmdd)
 POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
                            format = "%m/%d/%y")
+POSR_REAL$Dates2 <- as.POSIXct(POSR_REAL$Dates)
 POSR_REAL
 plot(POSR_REAL$Dates,
      POSR_REAL$Percentage_Female_Gonads,
@@ -106,9 +107,10 @@ plot(POSR_REAL$Dates,
 # instead of "Percentage of Female Gonads", "Ova Present"?
 
 #ggplot time
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library(ggplot2)
-graph1 <- qplot(Dates, Percentage_Female_Gonads, data = POSR_REAL, xlab = "Date Collected", ylab="Percentage of Oysters with Ova Present")
+library(scales)
+graph1 <- qplot(Dates2, Percentage_Female_Gonads, data = POSR_REAL, xlab = "Date Collected", ylab="Percentage of Oysters with Ova Present")
 ptcolor <- 'grey20'
 graph1 +
   ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
@@ -124,11 +126,11 @@ common_theme <- function() {
     axis.title.x=element_text(color=ptcolor),
     axis.title.y=element_text(color=ptcolor))
 }
-
 graph1 +
   ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
   theme_bw()+
-  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))+
+  scale_x_datetime(breaks = date_breaks("1 week"),labels = date_format("%m/%d/%y"))
 
 ```
 
@@ -145,7 +147,8 @@ graph2 <- qplot(Water_Temp_at_1m,
 graph2+
   ggtitle("Oysters Collected with Ova Present and Water Temperature")+
   theme_bw()+
-  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
+  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))+
+  scale_x_continuous(breaks = round(seq(min(POSR_REAL$Water_Temp_at_1m), max(POSR_REAL$Water_Temp_at_1m), by = 1)))
 
 #yes, there are only 7 points, 7/11 and 7/5 had same water temps and female gonad ratios
 ```

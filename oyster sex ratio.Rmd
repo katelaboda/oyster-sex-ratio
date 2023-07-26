@@ -18,8 +18,8 @@ waterconditions
 
 #load in raw sex ratio data from Excel
 ```{r}
-Pacific_Oyster_Sex_Ratio <- read.csv("Pacific_Oyster_Sex_Ratio.csv")
-Pacific_Oyster_Sex_Ratio
+#Pacific_Oyster_Sex_Ratio <- read.csv("Pacific_Oyster_Sex_Ratio.csv")
+#Pacific_Oyster_Sex_Ratio
 
 #the real stuff
 POSR_REAL <- read.csv("Pacific_Oyster_Sex_Ratio_REAL.csv")
@@ -28,16 +28,16 @@ POSR_REAL
 
 #update values in Environment; totalfemale, totalherm, femalegonads, percents female watertempsfake, total plankton
 ```{r}
-totalfemale = Pacific_Oyster_Sex_Ratio$Female
-totalherm = Pacific_Oyster_Sex_Ratio$Hermaphrodite
-femalegonads = totalfemale + totalherm
-percentsfemale = femalegonads/Pacific_Oyster_Sex_Ratio$`Total Oysters Collected`
-totalplankton = phyto_1m$Diatom_Sum[59:66]
+#totalfemale = Pacific_Oyster_Sex_Ratio$Female
+#totalherm = Pacific_Oyster_Sex_Ratio$Hermaphrodite
+#femalegonads = totalfemale + totalherm
+#percentsfemale = femalegonads/Pacific_Oyster_Sex_Ratio$`Total Oysters Collected`
+#totalplankton = phyto_1m$Diatom_Sum[59:66]
 #note: will need to change to [85:93] but excluding 86
-totalplankton
-watertempsfake = waterconditions$Water_Temp_1m_C[79:86]
+#totalplankton
+#watertempsfake = waterconditions$Water_Temp_1m_C[79:86]
 #note: will need to change to [105:115] excluding 106, 110, and 111
-watertempsfake
+#watertempsfake
 
 #the real stuff
 totalfemale_REAL = POSR_REAL$Female
@@ -53,16 +53,16 @@ watertemps
 
 #add new columns to data sheet; Total Female Gonads, Percentage Female Gonads, Water Temps at 1m, ID_yyyymmdd
 ```{r}
-Pacific_Oyster_Sex_Ratio$Total_Female_Gonads <- femalegonads
-percentsfemale = femalegonads/Pacific_Oyster_Sex_Ratio$Total.Oysters.Collected
-Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads <- percentsfemale
-Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m <- watertempsfake
-Pacific_Oyster_Sex_Ratio$Total_Plankton <- totalplankton
-datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711", "20230718", "20230725")
-Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- datesID
-juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199, 23206)
-Pacific_Oyster_Sex_Ratio$Julian_Date <- juliandates
-Pacific_Oyster_Sex_Ratio
+#Pacific_Oyster_Sex_Ratio$Total_Female_Gonads <- femalegonads
+#percentsfemale = femalegonads/Pacific_Oyster_Sex_Ratio$Total.Oysters.Collected
+#Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads <- percentsfemale
+#Pacific_Oyster_Sex_Ratio$Water_Temps_at_1m <- watertempsfake
+#Pacific_Oyster_Sex_Ratio$Total_Plankton <- totalplankton
+#datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711", "20230718", "20230725")
+#Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- datesID
+#juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199, 23206)
+#Pacific_Oyster_Sex_Ratio$Julian_Date <- juliandates
+#Pacific_Oyster_Sex_Ratio
 
 #the real stuff
 POSR_REAL$Total_Female_Gonads <- femalegonads_REAL
@@ -78,9 +78,9 @@ POSR_REAL
 
 #rearrange column order
 ```{r}
-library(data.table)
-setcolorder(Pacific_Oyster_Sex_Ratio, c("Date.Collected", "ID_yyyymmdd", "Julian_Date", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
-Pacific_Oyster_Sex_Ratio
+#library(data.table)
+#setcolorder(Pacific_Oyster_Sex_Ratio, c("Date.Collected", "ID_yyyymmdd", "Julian_Date", "Total.Oysters.Collected", "Male", "Female", "Hermaphrodite", "Total_Female_Gonads", "Percentage_Female_Gonads", "Water_Temps_at_1m", "Total_Plankton"))
+#Pacific_Oyster_Sex_Ratio
 
 #the real stuff
 library(data.table)
@@ -90,42 +90,46 @@ POSR_REAL
 
 #plot sex ratio over time
 ```{r}
-Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- as.numeric(Pacific_Oyster_Sex_Ratio$ID_yyyymmdd)
-Pacific_Oyster_Sex_Ratio$Dates <- as.Date(Pacific_Oyster_Sex_Ratio$Date.Collected, format="%m/%d/%y")
-plot(Pacific_Oyster_Sex_Ratio$Dates, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
+#Pacific_Oyster_Sex_Ratio$ID_yyyymmdd <- as.numeric(Pacific_Oyster_Sex_Ratio$ID_yyyymmdd)
+#Pacific_Oyster_Sex_Ratio$Dates <- as.Date(Pacific_Oyster_Sex_Ratio$Date.Collected, format="%m/%d/%y")
+#plot(Pacific_Oyster_Sex_Ratio$Dates, Pacific_Oyster_Sex_Ratio$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab= "Time")
 
 #the real stuff
-POSR_REAL$ID_yyyymmdd <- as.numeric(POSR_REAL$ID_yyyymmdd)
-POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
-                           format = "%m/%d/%y")
-POSR_REAL$Dates2 <- as.POSIXct(POSR_REAL$Dates)
-POSR_REAL
-plot(POSR_REAL$Dates,
-     POSR_REAL$Percentage_Female_Gonads,
-     ylab = "Percentage of Oysters with Ova Present",
-     xlab = "Time")
+#POSR_REAL$ID_yyyymmdd <- as.numeric(POSR_REAL$ID_yyyymmdd)
+#POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
+#                           format = "%m/%d/%y")
+#POSR_REAL$Dates2 <- as.POSIXct(POSR_REAL$Dates)
+#POSR_REAL
+#plot(POSR_REAL$Dates,
+#     POSR_REAL$Percentage_Female_Gonads,
+#    ylab = "Percentage of Oysters with Ova Present",
+#     xlab = "Time")
 # instead of "Percentage of Female Gonads", "Ova Present"?
 
 #ggplot time
 #install.packages("ggplot2")
+POSR_REAL$ID_yyyymmdd <- as.numeric(POSR_REAL$ID_yyyymmdd)
+POSR_REAL$Dates <- as.Date(POSR_REAL$Date.Collected,
+                          format = "%m/%d/%y")
+POSR_REAL$Dates2 <- as.POSIXct(POSR_REAL$Dates)
+POSR_REAL
 library(ggplot2)
 library(scales)
 graph1 <- qplot(Dates2, Percentage_Female_Gonads, data = POSR_REAL, xlab = "Date Collected", ylab="Percentage of Oysters with Ova Present")
 ptcolor <- 'grey20'
-graph1 +
-  ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
-  theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
-    axis.title.x=element_text(color=ptcolor),
-    axis.title.y=element_text(color=ptcolor))
+#graph1 +
+  #ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
+  #theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
+   # axis.title.x=element_text(color=ptcolor),
+    #axis.title.y=element_text(color=ptcolor))
 
 #create a common theme to reuse throughout plots
-common_theme <- function() {
-  ptcolor <- 'grey20' # plot text color
-  theme(
-    plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
-    axis.title.x=element_text(color=ptcolor),
-    axis.title.y=element_text(color=ptcolor))
-}
+#common_theme <- function() {
+ # ptcolor <- 'grey20' # plot text color
+  #theme(
+   # plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5),
+    #axis.title.x=element_text(color=ptcolor),
+    #axis.title.y=element_text(color=ptcolor))}
 graph1 +
   ggtitle("Percentage of Oysters Collected with Ova Present Throughout Study") +
   theme_bw()+
@@ -136,7 +140,7 @@ graph1 +
 
 #plot sex ratio over water temps
 ```{r}
-plot(POSR_REAL$Water_Temp_at_1m, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Oysters with Ova Present", xlab="Water Temperature at 1m")
+#plot(POSR_REAL$Water_Temp_at_1m, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Oysters with Ova Present", xlab="Water Temperature at 1m")
 
 graph2 <- qplot(Water_Temp_at_1m, 
       Percentage_Female_Gonads, 
@@ -155,7 +159,7 @@ graph2+
 
 #plot sex ratio over phytoplankton abundance
 ```{r}
-plot(POSR_REAL$Total_Diatom, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Diatom Abundance at 1m")
+#plot(POSR_REAL$Total_Diatom, POSR_REAL$Percentage_Female_Gonads, ylab="Percentage of Female Gonads", xlab="Diatom Abundance at 1m")
 
 graph3 <- qplot(Total_Diatom, 
       Percentage_Female_Gonads, 
@@ -168,7 +172,7 @@ graph3+
   theme_bw()+
   theme(plot.title=element_text(size=14, lineheight=0.8, color=ptcolor, hjust=0.5))
 ```
-# note: water temps and total plankton data are from corresponding dates from 2022 (not exact dates, but same week)
+
 
 #create input vectors for barplot and update barplot values
 ```{r}

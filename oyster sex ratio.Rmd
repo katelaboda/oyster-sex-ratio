@@ -44,11 +44,11 @@ totalfemale_REAL = POSR_REAL$Female
 totalherm_REAL = POSR_REAL$Hermaphrodite
 femalegonads_REAL = totalfemale_REAL + totalherm_REAL
 percentsfemale_REAL = femalegonads_REAL/POSR_REAL$Total.Oysters.Collected
-totaldiatom <- phyto_1m[c(84,86,87,88,89,90,91), "Diatom_Sum"]
+totaldiatom <- phyto_1m[c(84,86,87,88,89,90,91,92), "Diatom_Sum"]
 totaldiatom
-watertemps <- waterconditions[c(104,106,107,108,111,112,113), "Water_Temp_1m_C"]
+watertemps <- waterconditions[c(104,106,107,108,111,112,113,114), "Water_Temp_1m_C"]
 watertemps
-#make sure that row names are adjusted as new data comes in
+
 ```
 
 #add new columns to data sheet; Total Female Gonads, Percentage Female Gonads, Water Temps at 1m, ID_yyyymmdd
@@ -69,9 +69,9 @@ POSR_REAL$Total_Female_Gonads <- femalegonads_REAL
 POSR_REAL$Percentage_Female_Gonads <- percentsfemale_REAL
 POSR_REAL$Water_Temp_at_1m <- watertemps
 POSR_REAL$Total_Diatom <- totaldiatom
-datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711", "20230718")
+datesID <- c("20230606", "20230613", "20230620", "20230626", "20230705", "20230711", "20230718", "20230725")
 POSR_REAL$ID_yyyymmdd <- datesID
-juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199)
+juliandates <- c(23157, 23164, 23171, 23177, 23186, 23192, 23199, 23206)
 POSR_REAL$Julian_Date <- juliandates
 POSR_REAL
 ```
@@ -175,7 +175,7 @@ graph3+
 colors = c("lightblue", "pink", "yellow")
 regions <- c("Male", "Female", "Hermaphrodite")
 barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11")
-barplotvalues <- matrix(data = c(POSR_REAL$Male, POSR_REAL$Female, POSR_REAL$Hermaphrodite), nrow = 3, ncol = 7, byrow = TRUE)
+barplotvalues <- matrix(data = c(POSR_REAL$Male, POSR_REAL$Female, POSR_REAL$Hermaphrodite), nrow = 3, ncol = 8, byrow = TRUE)
 
 #the real stuff
 ```
@@ -188,7 +188,7 @@ legend("topleft", regions, cex = 0.4, fill = colors))
 ```{r}
 #ggplot2 stacked bar plot
 regions <- c("Male", "Female", "Hermaphrodite")
-barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18")
+barplotdates = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18", "7/25")
 barplotdata <- data.frame(barplotvalues, row.names=regions)
 barplotdata$"6/6" <-barplotdata$X1
 barplotdata$"6/13" <-barplotdata$X2
@@ -197,8 +197,9 @@ barplotdata$"6/26" <-barplotdata$X4
 barplotdata$"7/5" <-barplotdata$X5
 barplotdata$"7/11" <-barplotdata$X6
 barplotdata$"7/18" <- barplotdata$X7
+barplotdata$"7/25" <- barplotdata$X8
 barplotdata
-barplotdata <- barplotdata[8:14]
+barplotdata <- barplotdata[9:16]
 barplotdata
 
 # copying df
@@ -209,11 +210,11 @@ barplotdata_2$sex <- c("Male", "Female", "Hermaphrodite")
 
 # making wide data long
 #instal tidyverse
-long_barplot <- gather(data = barplotdata_2, key = "day", value = "count", 1:7) # key = description for columns you have & value = description for what is in the cells of your data frame
+long_barplot <- gather(data = barplotdata_2, key = "day", value = "count", 1:8) # key = description for columns you have & value = description for what is in the cells of your data frame
 long_barplot
 
 # change date to be factor
-long_barplot$day <- factor(long_barplot$day, levels = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18"))
+long_barplot$day <- factor(long_barplot$day, levels = c("6/6", "6/13", "6/20", "6/26", "7/5", "7/11", "7/18", "7/25"))
 
 # make 0s NA for text purposes
 #long_barplot[long_barplot==0] <- NA
@@ -267,7 +268,7 @@ m3.binomial <- glm(Percentage_Female_Gonads~Dates,
                    data = POSR_REAL)
 summary(m3.binomial)
 
-m4.binomial <- glm(Percentage_Female_Gonads~Julian_Date,
+m4.binomial <- glm(Percentage_Female_Gonads~Julian_Date, 
                    family = "binomial",
                    data = POSR_REAL)
 summary(m4.binomial)
